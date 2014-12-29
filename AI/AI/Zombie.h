@@ -14,7 +14,7 @@ class Zombie: public GameEntity
         void Update(double delta_time);
         void Draw(double delta_time);
 
-        inline Vector2D GetVelocity(void) const;
+        inline const Vector2D& GetVelocity(void) const;
 
     private:
         Vector2D velocity;
@@ -25,5 +25,10 @@ class Zombie: public GameEntity
 };
 
 ostream& operator<<(ostream &o, const Zombie &z);
+
+inline const Vector2D& Zombie::GetVelocity(void) const
+{
+	return this->velocity;
+}
 
 #endif

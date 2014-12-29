@@ -13,7 +13,7 @@ class Player: public GameEntity
         void Update(double delta_time);
         void Draw(double delta_time);
 
-        inline Vector2D GetVelocity(void) const;
+        inline const Vector2D& GetVelocity(void) const;
 
     private:
         Vector2D velocity;
@@ -22,5 +22,10 @@ class Player: public GameEntity
 };
 
 ostream& operator<<(ostream &o, const Player &p);
+
+inline const Vector2D& Player::GetVelocity(void) const
+{
+	return this->velocity;
+}
 
 #endif

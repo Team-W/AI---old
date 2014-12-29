@@ -18,15 +18,15 @@ class GameEntity
 
         void AttachToGameWorld(GameWorld *gw);
 
-        inline int GetID(void) const;
-        inline Vector2D GetPosition(void) const;
-        inline Vector2D GetHeading(void) const;
-        inline Vector2D GetSide(void) const;
-        inline double GetCollisionRadius(void) const;
-        inline void SetCollisionRadius(double d);
+        int GetID(void) const;
+        const Vector2D& GetPosition(void) const;
+		const Vector2D& GetHeading(void) const;
+		const Vector2D& GetSide(void) const;
+        double GetCollisionRadius(void) const;
+        void SetCollisionRadius(double d);
 
     protected:
-        const int id;
+        int id;
         static int next_id;
 
         GameWorld *game_world;
@@ -37,5 +37,35 @@ class GameEntity
 
         double collision_radius;
 };
+
+inline int GameEntity::GetID(void) const
+{
+	return this->id;
+}
+
+inline const Vector2D& GameEntity::GetPosition(void) const
+{
+	return this->position;
+}
+
+inline const Vector2D& GameEntity::GetHeading(void) const
+{
+	return this->heading;
+}
+
+inline const Vector2D& GameEntity::GetSide(void) const
+{
+	return this->side;
+}
+
+inline double GameEntity::GetCollisionRadius(void) const
+{
+	return this->collision_radius;
+}
+
+inline void GameEntity::SetCollisionRadius(double d)
+{
+	if(d > 0) this->collision_radius = d;
+}
 
 #endif

@@ -35,21 +35,6 @@ Vector2D SteeringBehaviour::GetSide(void)
 	return this->result_side;
 }
 
-inline void SteeringBehaviour::ActivateSeek(bool on)
-{
-
-}
-
-inline void SteeringBehaviour::ActivateFlee(bool on)
-{
-
-}
-
-inline void SteeringBehaviour::ActivateArrive(bool on)
-{
-
-}
-
 void SteeringBehaviour::CalculateSteeringForce(void)
 {
 

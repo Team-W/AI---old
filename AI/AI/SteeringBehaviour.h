@@ -14,9 +14,9 @@ public:
 	Vector2D GetHeading(void);
 	Vector2D GetSide(void);
 
-	inline void ActivateSeek(bool on);
-	inline void ActivateFlee(bool on);
-	inline void ActivateArrive(bool on);
+	void ActivateSeek(bool on);
+	void ActivateFlee(bool on);
+	void ActivateArrive(bool on);
 
 private:
 	bool seek_on;
@@ -43,5 +43,20 @@ private:
 };
 
 ostream& operator<<(ostream &o, const SteeringBehaviour &sb);
+
+inline void SteeringBehaviour::ActivateSeek(bool on)
+{
+
+}
+
+inline void SteeringBehaviour::ActivateFlee(bool on)
+{
+
+}
+
+inline void SteeringBehaviour::ActivateArrive(bool on)
+{
+
+}
 
 #endif

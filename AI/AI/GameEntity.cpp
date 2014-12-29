@@ -29,33 +29,3 @@ void GameEntity::AttachToGameWorld(GameWorld *gw)
         game_world->AddObject(this);
     }
 }
-
-inline int GameEntity::GetID(void) const
-{
-    return this->id;
-}
-
-inline Vector2D GameEntity::GetPosition(void) const
-{
-    return this->position;
-}
-
-inline Vector2D GameEntity::GetHeading(void) const
-{
-    return this->heading;
-}
-
-inline Vector2D GameEntity::GetSide(void) const
-{
-    return this->side;
-}
-
-inline double GameEntity::GetCollisionRadius(void) const
-{
-    return this->collision_radius;
-}
-
-inline void GameEntity::SetCollisionRadius(double d)
-{
-    if(d > 0) this->collision_radius = d;
-}

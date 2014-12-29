@@ -23,11 +23,6 @@ void Player::Draw(double delta_time)
     Update(delta_time);
 }
 
-inline Vector2D Player::GetVelocity(void) const
-{
-    return this->velocity;
-}
-
 ostream& operator<<(ostream &o, const Player &p)
 {
     o << "--------------- PLAYER ---------------" << "\n";

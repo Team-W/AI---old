@@ -22,37 +22,6 @@ Vector2D::~Vector2D(void)
     //cout << "-Vector2D" << endl;
 }
 
-double Vector2D::GetX(void) const
-{
-    return this->x;
-}
-
-double Vector2D::GetY(void) const
-{
-    return this->y;
-}
-
-double Vector2D::Length(void) const
-{
-    return (x*x + y*y);
-}
-
-double Vector2D::LengthSqrt(void) const
-{
-    return sqrt(x*x + y*y);
-}
-
-double Vector2D::Dot(const Vector2D &v) const
-{
-    return (this->x*v.x + this->y*v.y);
-}
-
-void Vector2D::Normalize(void)
-{
-    x /= LengthSqrt();
-    y /= LengthSqrt();
-}
-
 Vector2D& Vector2D::operator=(const Vector2D &v)
 {
     this->x = v.x;

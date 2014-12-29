@@ -21,6 +21,6 @@ class GameWorld
         friend ostream& operator<<(ostream &o, const GameWorld &gw);
 };
 
-inline ostream& operator<<(ostream &o, const GameWorld &gw);
+ostream& operator<<(ostream &o, const GameWorld &gw);
 
 #endif

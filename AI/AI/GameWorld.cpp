@@ -25,7 +25,7 @@ void GameWorld::RemoveObject(GameEntity *entity)
 
 }
 
-inline ostream& operator<<(ostream &o, const GameWorld &gw)
+ostream& operator<<(ostream &o, const GameWorld &gw)
 {
     o << "------------- GAME WORLD -------------" << "\n";
 
