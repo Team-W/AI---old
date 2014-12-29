@@ -17,8 +17,17 @@ Zombie::~Zombie(void)
 
 void Zombie::Update(double delta_time)
 {
-	velocity = steering_behaviour.GetSteeringForce();
+	Vector2D acceleration = steering_behaviour.GetSteeringForce();
+	velocity += acceleration * delta_time;
+	velocity.Truncate(ZOMBIE_MAX_SPEED);
     position += velocity * delta_time;
+
+	if(velocity.LengthSqrt() > 0.00000001)
+	{
+		heading = velocity;
+		heading.Normalize();
+		side = heading.GetPerpendicular();
+	}
 }
 
 void Zombie::Draw(double delta_time)
