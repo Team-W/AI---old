@@ -7,14 +7,16 @@
 class Obstacle: public GameEntity
 {
     public:
-        Obstacle(double x, double y);
+		Obstacle();
+        Obstacle(double x, double y, double rad);
         ~Obstacle(void);
 
         void Update(double delta_time);
         void Draw(double delta_time);
+		void InitDraw(void);
 
     private:
-
+		double radius;
         friend ostream& operator<<(ostream &o, const Obstacle &ob);
 };
 

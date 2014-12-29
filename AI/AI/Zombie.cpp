@@ -35,6 +35,11 @@ void Zombie::Draw(double delta_time)
     Update(delta_time);
 }
 
+void Zombie::InitDraw()
+{
+
+}
+
 ostream& operator<<(ostream &o, const Zombie &z)
 {
     o << "--------------- ZOMBIE ---------------" << "\n";

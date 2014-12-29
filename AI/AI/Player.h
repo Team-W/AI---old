@@ -12,6 +12,7 @@ class Player: public GameEntity
 
         void Update(double delta_time);
         void Draw(double delta_time);
+		void InitDraw();
 
         inline const Vector2D& GetVelocity(void) const;
 
