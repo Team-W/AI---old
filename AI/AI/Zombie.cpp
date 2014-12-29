@@ -15,6 +15,7 @@ Zombie::~Zombie(void)
 
 void Zombie::Update(double delta_time)
 {
+	velocity = steering_behaviour.GetSteeringForce();
     position += velocity * delta_time;
 }
 
@@ -28,7 +29,7 @@ inline Vector2D Zombie::GetVelocity(void) const
     return this->velocity;
 }
 
-inline ostream& operator<<(ostream &o, const Zombie &z)
+ostream& operator<<(ostream &o, const Zombie &z)
 {
     o << "--------------- ZOMBIE ---------------" << "\n";
     o << "Object ID:\t" << z.id         << "\n";
@@ -36,7 +37,7 @@ inline ostream& operator<<(ostream &o, const Zombie &z)
     o << "Velocity:\t"  << z.velocity   << "\n";
     o << "Heading:\t"   << z.heading    << "\n";
     o << "Side:\t\t"    << z.side       << "\n";
-//    o << "\n"           << z.steering_behaviour   << "\n";
+	o << "\n"           << z.steering_behaviour;
     o << "--------------------------------------" << endl;
     return o;
 }

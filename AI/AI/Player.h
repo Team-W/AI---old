@@ -1,7 +1,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include "stdafx.h"
+#include "Headers.h"
 #include "GameEntity.h"
 
 class Player: public GameEntity
@@ -16,11 +16,11 @@ class Player: public GameEntity
         inline Vector2D GetVelocity(void) const;
 
     private:
-        Vector2D velocity;      // wektor predkosci
+        Vector2D velocity;
 
         friend ostream& operator<<(ostream &o, const Player &p);
 };
 
-inline ostream& operator<<(ostream &o, const Player &p);
+ostream& operator<<(ostream &o, const Player &p);
 
 #endif

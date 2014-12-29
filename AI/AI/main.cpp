@@ -1,19 +1,11 @@
-#include <iostream>
-using namespace std;
+#include "Headers.h"
 
-#include "Vector2D.cpp"
-#include "GameEntity.cpp"
-#include "Zombie.cpp"
-#include "Obstacle.cpp"
-#include "Player.cpp"
-#include "GameWorld.cpp"
-#include "SteeringBehaviour.cpp"
+#include "Zombie.h"
 
-int main()
+int main(int argc, char **argv)
 {
-    Zombie z1(1, 2);
-    Zombie z2(2, 2);
-    Zombie z3(3, 2);
-    cout << z3 << endl;
-}
+	Zombie z(2, 1);
+	cout << z << endl;
 
+	system("pause");
+}

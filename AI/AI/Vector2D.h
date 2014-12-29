@@ -1,7 +1,7 @@
 #ifndef VECTOR2D_H
 #define VECTOR2D_H
 
-#include "stdafx.h"
+#include "Headers.h"
 
 class Vector2D
 {
@@ -19,16 +19,16 @@ class Vector2D
         inline double Dot(const Vector2D &v) const;
         inline void Normalize(void);
 
-        inline Vector2D& operator=(const Vector2D &v);
-        inline Vector2D& operator+(const Vector2D &v);
-        inline Vector2D& operator-(const Vector2D &v);
-        inline Vector2D& operator+=(const Vector2D &v);
-        inline Vector2D& operator-=(const Vector2D &v);
-        inline Vector2D& operator*(const double &d);
-        inline Vector2D& operator/(const double &d);
-        inline void operator()(double x, double y);
-        inline bool operator==(const Vector2D &v);
-        inline bool operator!=(const Vector2D &v);
+        Vector2D& operator=(const Vector2D &v);
+        Vector2D& operator+(const Vector2D &v);
+        Vector2D& operator-(const Vector2D &v);
+        Vector2D& operator+=(const Vector2D &v);
+        Vector2D& operator-=(const Vector2D &v);
+        Vector2D& operator*(const double &d);
+        Vector2D& operator/(const double &d);
+        void operator()(double x, double y);
+        bool operator==(const Vector2D &v);
+        bool operator!=(const Vector2D &v);
 
     private:
         double x;
@@ -37,6 +37,6 @@ class Vector2D
         friend ostream& operator<<(ostream &o, const Vector2D &v);
 };
 
-inline ostream& operator<<(ostream &o, const Vector2D &v);
+ostream& operator<<(ostream &o, const Vector2D &v);
 
 #endif

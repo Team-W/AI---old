@@ -1,7 +1,7 @@
 #ifndef OBSTACLE_H
 #define OBSTACLE_H
 
-#include "stdafx.h"
+#include "Headers.h"
 #include "GameEntity.h"
 
 class Obstacle: public GameEntity
@@ -18,6 +18,6 @@ class Obstacle: public GameEntity
         friend ostream& operator<<(ostream &o, const Obstacle &ob);
 };
 
-inline ostream& operator<<(ostream &o, const Obstacle &ob);
+ostream& operator<<(ostream &o, const Obstacle &ob);
 
 #endif

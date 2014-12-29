@@ -10,6 +10,26 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GameEntity.h" />
+    <ClInclude Include="GameWorld.h" />
+    <ClInclude Include="Headers.h" />
+    <ClInclude Include="Obstacle.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="SteeringBehaviour.h" />
+    <ClInclude Include="Vector2D.h" />
+    <ClInclude Include="Zombie.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GameEntity.cpp" />
+    <ClCompile Include="GameWorld.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Obstacle.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="SteeringBehaviour.cpp" />
+    <ClCompile Include="Vector2D.cpp" />
+    <ClCompile Include="Zombie.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{E9217C48-BC78-4C38-A35C-0C6359B65218}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
@@ -53,12 +73,12 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\Konrad\Desktop\freeglut\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\freeglut\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\Konrad\Desktop\freeglut\lib;</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\freeglut\lib;</AdditionalLibraryDirectories>
       <AdditionalDependencies>freeglut.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
@@ -81,26 +101,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="GameEntity.h" />
-    <ClInclude Include="GameWorld.h" />
-    <ClInclude Include="Obstacle.h" />
-    <ClInclude Include="Player.h" />
-    <ClInclude Include="stdafx.h" />
-    <ClInclude Include="SteeringBehaviour.h" />
-    <ClInclude Include="Vector2D.h" />
-    <ClInclude Include="Zombie.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="GameEntity.cpp" />
-    <ClCompile Include="GameWorld.cpp" />
-    <ClCompile Include="Obstacle.cpp" />
-    <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Source.cpp" />
-    <ClCompile Include="SteeringBehaviour.cpp" />
-    <ClCompile Include="Vector2D.cpp" />
-    <ClCompile Include="Zombie.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

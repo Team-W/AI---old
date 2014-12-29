@@ -1,7 +1,7 @@
 #ifndef GAME_ENTITY_H
 #define GAME_ENTITY_H
 
-#include "stdafx.h"
+#include "Headers.h"
 #include "Vector2D.h"
 #include "GameWorld.h"
 

@@ -22,7 +22,7 @@ void Obstacle::Draw(double delta_time)
     Update(delta_time);
 }
 
-inline ostream& operator<<(ostream &o, const Obstacle &ob)
+ostream& operator<<(ostream &o, const Obstacle &ob)
 {
     o << "-------------- OBSTACLE --------------" << "\n";
     o << "Object ID:\t" << ob.id         << "\n";

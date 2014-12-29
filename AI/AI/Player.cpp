@@ -28,7 +28,7 @@ inline Vector2D Player::GetVelocity(void) const
     return this->velocity;
 }
 
-inline ostream& operator<<(ostream &o, const Player &p)
+ostream& operator<<(ostream &o, const Player &p)
 {
     o << "--------------- PLAYER ---------------" << "\n";
     o << "Object ID:\t" << p.id         << "\n";

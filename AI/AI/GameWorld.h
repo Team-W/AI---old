@@ -1,7 +1,7 @@
 #ifndef GAME_WORLD_H
 #define GAME_WORLD_H
 
-#include "stdafx.h"
+#include "Headers.h"
 #include "GameEntity.h"
 
 class GameEntity;

@@ -1,7 +1,7 @@
 #ifndef ZOMBIE_H
 #define ZOMBIE_H
 
-#include "stdafx.h"
+#include "Headers.h"
 #include "GameEntity.h"
 #include "SteeringBehaviour.h"
 
@@ -17,13 +17,13 @@ class Zombie: public GameEntity
         inline Vector2D GetVelocity(void) const;
 
     private:
-        Vector2D velocity;      // wektor predkosci
+        Vector2D velocity;
 
-        //SteeringBehaviour steering_behaviour;
+        SteeringBehaviour steering_behaviour;
 
         friend ostream& operator<<(ostream &o, const Zombie &z);
 };
 
-inline ostream& operator<<(ostream &o, const Zombie &z);
+ostream& operator<<(ostream &o, const Zombie &z);
 
 #endif
