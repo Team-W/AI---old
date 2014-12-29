@@ -46,17 +46,17 @@ ostream& operator<<(ostream &o, const SteeringBehaviour &sb);
 
 inline void SteeringBehaviour::ActivateSeek(bool on)
 {
-
+	this->seek_on = on;
 }
 
 inline void SteeringBehaviour::ActivateFlee(bool on)
 {
-
+	this->flee_on = on;
 }
 
 inline void SteeringBehaviour::ActivateArrive(bool on)
 {
-
+	this->arrive_on = on;
 }
 
 #endif
