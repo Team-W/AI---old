@@ -33,13 +33,13 @@ void Obstacle::InitDraw()
 	glBegin(GL_LINES);
 	glColor3f(1.0f, 0.0f, 0.0f);
 
-	a = (float)radius * cos(359 * PI / 180.0f) + position.GetX();
-	b = (float)radius * sin(359 * PI / 180.0f) + position.GetY();
+	a = (float)radius * cos(359 * PI / 180.0f);
+	b = (float)radius * sin(359 * PI / 180.0f);
 	for (int j = 0; j < 360; j++)
 	{
 		glVertex2f(a, b);
-		a = (float)radius * cos(j * PI / 180.0f) + position.GetX();
-		b = (float)radius * sin(j * PI / 180.0f) + position.GetY();
+		a = (float)radius * cos(j * PI / 180.0f);
+		b = (float)radius * sin(j * PI / 180.0f);
 		glVertex2f(a, b);
 	}
 
