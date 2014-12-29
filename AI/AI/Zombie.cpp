@@ -6,8 +6,6 @@ Zombie::Zombie(double x, double y)
     this->velocity(0, 0);
     this->heading(0, 0);
     this->side(0, 0);
-
-	cout << velocity.GetX();
 }
 
 Zombie::~Zombie(void)
@@ -32,7 +30,7 @@ void Zombie::Update(double delta_time)
 
 void Zombie::Draw(double delta_time)
 {
-    Update(delta_time);
+
 }
 
 void Zombie::InitDraw()
