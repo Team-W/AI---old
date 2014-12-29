@@ -8,6 +8,7 @@
 class Zombie: public GameEntity
 {
     public:
+		Zombie();
         Zombie(double x, double y);
         ~Zombie(void);
 
