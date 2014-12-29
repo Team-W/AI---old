@@ -15,6 +15,7 @@ class GameEntity
 
         virtual void Update(double delta_time) = 0;
         virtual void Draw(double delta_time) = 0;
+		virtual void InitDraw(void) = 0;
 
         void AttachToGameWorld(GameWorld *gw);
 

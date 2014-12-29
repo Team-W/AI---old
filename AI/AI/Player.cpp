@@ -23,6 +23,11 @@ void Player::Draw(double delta_time)
     Update(delta_time);
 }
 
+void Player::InitDraw()
+{
+
+}
+
 ostream& operator<<(ostream &o, const Player &p)
 {
     o << "--------------- PLAYER ---------------" << "\n";

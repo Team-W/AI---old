@@ -12,6 +12,7 @@
 #include <vector>
 
 // Graphic Libraries
+#include <GL/glut.h>
 
 // Misc
 using namespace std;
