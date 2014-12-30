@@ -3,12 +3,17 @@
 
 #include "Vector2D.h"
 #include "GameWorld.h"
+#include "Zombie.h"
+
+class Zombie;
 
 class SteeringBehaviour
 {
 public:
-	SteeringBehaviour(void);
+	SteeringBehaviour(Zombie *z);
 	~SteeringBehaviour(void);
+
+	void Attach(Zombie *z);
 
 	Vector2D GetSteeringForce(void);
 	Vector2D GetHeading(void);
@@ -19,6 +24,12 @@ public:
 	void ActivateArrive(bool on);
 
 private:
+	Zombie *owner;
+
+	double wander_circle_radius = 1.0;
+	double wander_circle_distance = 1.0;
+	double wander_circle_jitter = 1.0;
+
 	bool seek_on;
 	bool flee_on;
 	bool arrive_on;
@@ -26,6 +37,7 @@ private:
 	Vector2D result_seek;
 	Vector2D result_flee;
 	Vector2D result_arrive;
+	Vector2D result_wander;
 
 	Vector2D result_steering_force;
 	Vector2D result_heading;
@@ -38,6 +50,7 @@ private:
 	void Seek(Vector2D &v);
 	void Flee(Vector2D &v);
 	void Arrive(Vector2D &v);
+	void Wander();
 
 	friend ostream& operator<<(ostream &o, const SteeringBehaviour &sb);
 };

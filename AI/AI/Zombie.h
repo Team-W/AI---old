@@ -5,6 +5,8 @@
 #include "GameEntity.h"
 #include "SteeringBehaviour.h"
 
+class SteeringBehaviour;
+
 class Zombie: public GameEntity
 {
     public:
@@ -21,7 +23,7 @@ class Zombie: public GameEntity
     private:
         Vector2D velocity;
 
-        SteeringBehaviour steering_behaviour;
+        SteeringBehaviour *steering_behaviour;
 
         friend ostream& operator<<(ostream &o, const Zombie &z);
 };

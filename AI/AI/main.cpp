@@ -27,7 +27,7 @@ void renderScene(void) {
 	glLoadIdentity();
 
 	glPushMatrix();
-		//glScalef(0.5f, 0.5f, 1.0f);
+		glScalef(0.5f, 0.5f, 1.0f);
 		z.InitDraw();
 		o[0].InitDraw();
 		o[1].InitDraw();
@@ -39,11 +39,13 @@ void renderScene(void) {
 }
 
 void idle(int i){
+	
 	//z.Draw(0.01);
 	//glutPostRedisplay();
 }
 
 void idle(){
+	
 	//Sleep(70);
 	//randoming position on the circle
 	//(10, idle, 1);//

@@ -71,6 +71,20 @@ Vector2D& Vector2D::operator/(const double &d)
     return *this;
 }
 
+Vector2D& Vector2D::operator*=(const double &d)
+{
+	this->x *= d;
+	this->y *= d;
+	return *this;
+}
+
+Vector2D& Vector2D::operator/=(const double &d)
+{
+	this->x /= d;
+	this->y /= d;
+	return *this;
+}
+
 void Vector2D::operator()(double x, double y)
 {
     this->x = x;

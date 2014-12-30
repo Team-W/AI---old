@@ -33,6 +33,8 @@ class Vector2D
         Vector2D& operator-=(const Vector2D &v);
         Vector2D& operator*(const double &d);
         Vector2D& operator/(const double &d);
+		Vector2D& operator*=(const double &d);
+		Vector2D& operator/=(const double &d);
         void operator()(double x, double y);
         bool operator==(const Vector2D &v);
         bool operator!=(const Vector2D &v);

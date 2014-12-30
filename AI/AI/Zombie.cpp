@@ -7,6 +7,7 @@ Zombie::Zombie()
 
 Zombie::Zombie(double x, double y)
 {
+	this->steering_behaviour = new SteeringBehaviour(this);
     this->position(x, y);
     this->velocity(0, 0);
     this->heading(0, 0);
@@ -20,7 +21,7 @@ Zombie::~Zombie(void)
 
 void Zombie::Update(double delta_time)
 {
-	Vector2D acceleration = steering_behaviour.GetSteeringForce();
+	Vector2D acceleration = steering_behaviour->GetSteeringForce();
 	velocity += acceleration * delta_time;
 	velocity.Truncate(ZOMBIE_MAX_SPEED);
     position += velocity * delta_time;
