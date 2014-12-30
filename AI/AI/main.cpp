@@ -1,10 +1,10 @@
 #include "Headers.h"
+#include "Scene.h"
 #include "Obstacle.h"
 #include "Zombie.h"
 
 bool* keyStates = new bool[256];
-Obstacle o[4];
-Zombie z;
+Scene scene;
 
 void init(){
 	srand(time(NULL));
@@ -13,11 +13,11 @@ void init(){
 		keyStates[i] = false;
 		i++;
 	} while (i != 'a');
-	z = Zombie(0.0, 0.0);
-	o[0] = Obstacle(-0.5, -0.6, 0.35);
-	o[1] = Obstacle(-0.4, 0.35, 0.25);
-	o[2] = Obstacle(0.5, -0.3, 0.3);
-	o[3] = Obstacle(0.45, 0.45, 0.15);
+	scene.AddObject(new Zombie(0.0, 0.0));
+	scene.AddObject(new Obstacle(-0.50, -0.60, 0.35));
+	scene.AddObject(new Obstacle(-0.40,  0.35, 0.25));
+	scene.AddObject(new Obstacle( 0.50, -0.30, 0.30));
+	scene.AddObject(new Obstacle( 0.45,  0.45, 0.15));
 
 
 }
@@ -27,20 +27,19 @@ void renderScene(void) {
 	glLoadIdentity();
 
 	glPushMatrix();
-		glScalef(0.5f, 0.5f, 1.0f);
-		z.InitDraw();
-		o[0].InitDraw();
-		o[1].InitDraw();
-		o[2].InitDraw();
-		o[3].InitDraw();
+
+		//glScalef(0.5f, 0.5f, 1.0f);
+		scene.InitDraw();
+
 	glPopMatrix();
 
 	glutSwapBuffers();
 }
 
 void idle(int i){
-	
-	//z.Draw(0.01);
+
+	scene.Draw(0.01);
+
 	//glutPostRedisplay();
 }
 
