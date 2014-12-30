@@ -16,6 +16,7 @@
     <ClInclude Include="Headers.h" />
     <ClInclude Include="Obstacle.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Scene.h" />
     <ClInclude Include="SteeringBehaviour.h" />
     <ClInclude Include="Vector2D.h" />
     <ClInclude Include="Zombie.h" />
@@ -26,6 +27,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Obstacle.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SteeringBehaviour.cpp" />
     <ClCompile Include="Vector2D.cpp" />
     <ClCompile Include="Zombie.cpp" />
