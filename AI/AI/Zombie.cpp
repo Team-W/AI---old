@@ -21,6 +21,8 @@ Zombie::~Zombie(void)
 
 void Zombie::Update(double delta_time)
 {
+	
+	// system("cls"); cout << *this;
 	Vector2D acceleration = steering_behaviour->GetSteeringForce();
 	velocity += acceleration * delta_time;
 	velocity.Truncate(ZOMBIE_MAX_SPEED);
@@ -50,8 +52,8 @@ void Zombie::InitDraw()
 
 		glBegin(GL_TRIANGLES);
 			glColor3f(1.0f, 1.0f, 0.0f);
-			glVertex3f(-0.05f,-0.05f, 0.f);
-			glVertex3f( 0.05f,-0.05f, 0.f);
+			glVertex3f(-0.03f,-0.05f, 0.f);
+			glVertex3f( 0.03f,-0.05f, 0.f);
 			glVertex3f( 0.00f, 0.05f, 0.f);
 		glEnd();
 
@@ -80,7 +82,7 @@ ostream& operator<<(ostream &o, const Zombie &z)
     o << "Velocity:\t"  << z.velocity   << "\n";
     o << "Heading:\t"   << z.heading    << "\n";
     o << "Side:\t\t"    << z.side       << "\n";
-	o << "\n"           << z.steering_behaviour;
+	o << "\n"           << *(z.steering_behaviour);
     o << "--------------------------------------" << endl;
     return o;
 }

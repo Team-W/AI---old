@@ -9,50 +9,53 @@ class Zombie;
 
 class SteeringBehaviour
 {
-public:
-	SteeringBehaviour(Zombie *z);
-	~SteeringBehaviour(void);
+	public:
+		SteeringBehaviour(Zombie *z);
+		~SteeringBehaviour(void);
 
-	void Attach(Zombie *z);
+		void Attach(Zombie *z);
 
-	Vector2D GetSteeringForce(void);
-	Vector2D GetHeading(void);
-	Vector2D GetSide(void);
+		Vector2D GetSteeringForce(void);
+		Vector2D GetHeading(void);
+		Vector2D GetSide(void);
 
-	void ActivateSeek(bool on);
-	void ActivateFlee(bool on);
-	void ActivateArrive(bool on);
+		void ActivateSeek(bool on);
+		void ActivateFlee(bool on);
+		void ActivateArrive(bool on);
 
-private:
-	Zombie *owner;
+	private:
+		Zombie *owner;
 
-	double wander_circle_radius = 1.0;
-	double wander_circle_distance = 1.0;
-	double wander_circle_jitter = 1.0;
+		float wander_radius;
+		float wander_distance;
+		float wander_jitter;
 
-	bool seek_on;
-	bool flee_on;
-	bool arrive_on;
+		bool seek_on;
+		bool flee_on;
+		bool arrive_on;
+		bool wander_on;
 
-	Vector2D result_seek;
-	Vector2D result_flee;
-	Vector2D result_arrive;
-	Vector2D result_wander;
+		Vector2D target_seek;
+		Vector2D target_flee;
+		Vector2D target_arrive;
+		Vector2D target_wander;
 
-	Vector2D result_steering_force;
-	Vector2D result_heading;
-	Vector2D result_side;
+		Vector2D force_wander;
 
-	void CalculateSteeringForce(void);
-	void CalculateHeading(void);
-	void CalculateSide(void);
+		Vector2D result_steering_force;
+		Vector2D result_heading;
+		Vector2D result_side;
 
-	void Seek(Vector2D &v);
-	void Flee(Vector2D &v);
-	void Arrive(Vector2D &v);
-	void Wander();
+		void CalculateSteeringForce(void);
+		void CalculateHeading(void);
+		void CalculateSide(void);
 
-	friend ostream& operator<<(ostream &o, const SteeringBehaviour &sb);
+		void Seek(Vector2D &v);
+		void Flee(Vector2D &v);
+		void Arrive(Vector2D &v);
+		void Wander();
+
+		friend ostream& operator<<(ostream &o, const SteeringBehaviour &sb);
 };
 
 ostream& operator<<(ostream &o, const SteeringBehaviour &sb);

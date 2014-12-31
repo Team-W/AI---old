@@ -19,7 +19,6 @@ void init(){
 	scene.AddObject(new Obstacle( 0.50, -0.30, 0.30));
 	scene.AddObject(new Obstacle( 0.45,  0.45, 0.15));
 
-
 }
 
 void renderScene(void) {
@@ -37,7 +36,7 @@ void renderScene(void) {
 }
 
 void idle(int i){
-
+	
 	scene.Draw(0.01);
 
 	//glutPostRedisplay();
@@ -82,7 +81,7 @@ int main(int argc, char **argv)
 
 	// register callbacks
 	glutDisplayFunc(renderScene);
-	//glutIdleFunc(idle);
+	glutIdleFunc(idle);
 
 	//Keyboard input
 	glutKeyboardFunc(keyPressed);
