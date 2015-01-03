@@ -5,6 +5,7 @@
 
 bool* keyStates = new bool[256];
 Scene scene;
+Zombie *z = new Zombie(0.0, 0.0);
 
 void init(){
 	srand(time(NULL));
@@ -13,11 +14,11 @@ void init(){
 		keyStates[i] = false;
 		i++;
 	} while (i != 'a');
-	scene.AddObject(new Zombie(0.0, 0.0));
-	scene.AddObject(new Obstacle(-0.50, -0.60, 0.35));
-	scene.AddObject(new Obstacle(-0.40,  0.35, 0.25));
-	scene.AddObject(new Obstacle( 0.50, -0.30, 0.30));
-	scene.AddObject(new Obstacle( 0.45,  0.45, 0.15));
+	scene.AddObject(z);
+	scene.AddObject(new Obstacle(-2.00, -1.00, 0.75));
+	scene.AddObject(new Obstacle(-1.20,  1.35, 0.50));
+	scene.AddObject(new Obstacle( 1.30, -0.80, 0.60));
+	scene.AddObject(new Obstacle( 1.15,  1.75, 0.45));
 
 }
 
@@ -27,7 +28,7 @@ void renderScene(void) {
 
 	glPushMatrix();
 
-		//glScalef(0.5f, 0.5f, 1.0f);
+		glScalef(0.3f, 0.3f, 1.0f);
 		scene.InitDraw();
 
 	glPopMatrix();
@@ -38,7 +39,8 @@ void renderScene(void) {
 void idle(int i){
 	
 	scene.Draw(0.01);
-
+	//cout << *z;
+	//system("pause");
 	//glutPostRedisplay();
 }
 

@@ -12,6 +12,7 @@ Zombie::Zombie(double x, double y)
     this->velocity(0, 0);
     this->heading(0, 0);
     this->side(0, 0);
+	this->rotation = 0;
 }
 
 Zombie::~Zombie(void)
@@ -24,10 +25,19 @@ void Zombie::Update(double delta_time)
 	
 	// system("cls"); cout << *this;
 	Vector2D acceleration = steering_behaviour->GetSteeringForce();
+	double a = 0.0, b=3.0;
+	double ra = acceleration.GetX();
+	double rb = acceleration.GetY();
+	double counter = ra*a + rb*b;
+	double denominator = sqrt((ra*ra + rb*rb))*sqrt((a*a) + (b*b));
+	double angle = acos(counter / denominator);
+
+	rotation += angle;
 	velocity += acceleration * delta_time;
 	velocity.Truncate(ZOMBIE_MAX_SPEED);
+	velocity.Rotate(angle);
     position += velocity * delta_time;
-
+	
 	if(velocity.LengthSqrt() > 0.00000001)
 	{
 		heading = velocity;
@@ -46,9 +56,9 @@ void Zombie::InitDraw()
 	float a, b;
 	glEnable(GL_LINE_SMOOTH);
 	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
-	glPushMatrix();
+	glPushMatrix();		
 		glTranslatef(position.GetX(), position.GetY(), 0.0);
-		//glRotatef(radius, 0.0f, 0.0f, 1.0f);
+		glRotatef(rotation, 0.0f, 0.0f, 1.0f);
 
 		glBegin(GL_TRIANGLES);
 			glColor3f(1.0f, 1.0f, 0.0f);

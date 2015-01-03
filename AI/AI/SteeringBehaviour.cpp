@@ -40,7 +40,7 @@ void SteeringBehaviour::Attach(Zombie *z)
 Vector2D SteeringBehaviour::GetSteeringForce(void)
 {
 	Wander();
-	result_steering_force = force_wander;
+	result_steering_force(force_wander.GetY(), force_wander.GetX());
 	return this->result_steering_force;
 }
 
@@ -95,7 +95,7 @@ void SteeringBehaviour::Wander()
 
 	Vector2D target_local = target_wander + Vector2D(wander_distance, 0);
 
-	// tutaj trzeba zrobiæ wszystkie rotacje/translacje/skalowania aby uzyskaæ punkt we wspó³rzêdnych œwiata
+	// tutaj trzeba zrobiEwszystkie rotacje/translacje/skalowania aby uzyskaEpunkt we wspó³rzêdnych œwiata
 	Vector2D target_world = target_local + owner->GetPosition();
 
 
