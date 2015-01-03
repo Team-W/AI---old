@@ -41,6 +41,8 @@ Vector2D SteeringBehaviour::GetSteeringForce(void)
 {
 	Wander();
 	result_steering_force = force_wander;
+
+	result_steering_force.SwapXY();
 	return this->result_steering_force;
 }
 

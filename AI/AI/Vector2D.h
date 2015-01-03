@@ -21,6 +21,7 @@ class Vector2D
         double Dot(const Vector2D &v) const;
         void Normalize(void);
 		void Truncate(double d);
+		void SwapXY(void);
 		int GetSign(const Vector2D &v) const;
 
 		Vector2D GetReversed(void) const;
@@ -104,6 +105,13 @@ inline void Vector2D::Truncate(double d)
 		this->x *= d;
 		this->y *= d;
 	}
+}
+
+inline void Vector2D::SwapXY(void)
+{
+	double tmp = x;
+	x = y;
+	y = tmp;
 }
 
 inline int Vector2D::GetSign(const Vector2D &v) const
