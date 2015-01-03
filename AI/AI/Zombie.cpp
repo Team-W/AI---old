@@ -23,8 +23,10 @@ Zombie::~Zombie(void)
 void Zombie::Update(double delta_time)
 {
 	
-	// system("cls"); cout << *this;
+	// system("cls"); cout << *this
 	Vector2D acceleration = steering_behaviour->GetSteeringForce();
+	
+	//counting angle between 2 vectors
 	double a = 0.0, b=3.0;
 	double ra = acceleration.GetX();
 	double rb = acceleration.GetY();
@@ -34,8 +36,8 @@ void Zombie::Update(double delta_time)
 
 	rotation += angle;
 	velocity += acceleration * delta_time;
+	velocity.Rotate(rotation); //rotating velocity vector to move in the correct direction
 	velocity.Truncate(ZOMBIE_MAX_SPEED);
-	velocity.Rotate(angle);
     position += velocity * delta_time;
 	
 	if(velocity.LengthSqrt() > 0.00000001)
