@@ -29,18 +29,14 @@ Vector2D& Vector2D::operator=(const Vector2D &v)
     return *this;
 }
 
-Vector2D& Vector2D::operator+(const Vector2D &v)
+Vector2D Vector2D::operator+(const Vector2D &v)
 {
-    this->x += v.x;
-    this->y += v.y;
-    return *this;
+	return Vector2D(this->x + v.x, this->y + v.y);
 }
 
-Vector2D& Vector2D::operator-(const Vector2D &v)
+Vector2D Vector2D::operator-(const Vector2D &v)
 {
-    this->x -= v.x;
-    this->y -= v.y;
-    return *this;
+	return Vector2D(this->x - v.x, this->y - v.y);
 }
 
 Vector2D& Vector2D::operator+=(const Vector2D &v)
@@ -57,18 +53,14 @@ Vector2D& Vector2D::operator-=(const Vector2D &v)
     return *this;
 }
 
-Vector2D& Vector2D::operator*(const double &d)
+Vector2D Vector2D::operator*(const double &d)
 {
-    this->x *= d;
-    this->y *= d;
-    return *this;
+	return Vector2D(this->x * d, this->y * d);
 }
 
-Vector2D& Vector2D::operator/(const double &d)
+Vector2D Vector2D::operator/(const double &d)
 {
-    this->x /= d;
-    this->y /= d;
-    return *this;
+	return Vector2D(this->x / d, this->y / d);
 }
 
 Vector2D& Vector2D::operator*=(const double &d)
@@ -105,7 +97,7 @@ ostream& operator<<(ostream &o, const Vector2D &v)
 {
     o.setf(ios::fixed, ios::floatfield);
     o.precision(4);
-    o << "[" << v.x << ", " << v.y << "]";
+    o << "[" << v.x << ", " << v.y << "]\n";
     o.unsetf(ios::floatfield);
     return o;
 }

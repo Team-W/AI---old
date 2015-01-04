@@ -22,23 +22,11 @@ Zombie::~Zombie(void)
 
 void Zombie::Update(double delta_time)
 {
-	
-	system("cls"); cout << *this;
+	// system("cls"); cout << *this;
 	Vector2D acceleration = steering_behaviour->GetSteeringForce();
-	
-	//counting angle between 2 vectors
-	double a = 0.0, b=3.0;
-	double ra = acceleration.GetX();
-	double rb = acceleration.GetY();
-	double counter = ra*a + rb*b;
-	double denominator = sqrt((ra*ra + rb*rb))*sqrt((a*a) + (b*b));
-	double angle = acos(counter / denominator);
-
-	rotation += angle;
 	velocity += acceleration * delta_time;
-	velocity.Rotate(rotation); //rotating velocity vector to move in the correct direction
 	velocity.Truncate(ZOMBIE_MAX_SPEED);
-    position += velocity * delta_time;
+
 	
 	if(velocity.LengthSqrt() > 0.00000001)
 	{
@@ -46,6 +34,15 @@ void Zombie::Update(double delta_time)
 		heading.Normalize();
 		side = heading.GetPerpendicular();
 	}
+	/*/counting angle between 2 vectors
+	Vector2D standard = Vector2D(0.0, 1.0);
+	double angle = acos(acceleration.Dot(standard) / (standard.Length()*acceleration.Length()));
+	rotation += angle;
+	cout << angle << "\n";
+	//velocity.Rotate(rotation); //rotating velocity vector to move in the correct direction*/
+	
+    position += velocity * delta_time;
+	
 }
 
 void Zombie::Draw(double delta_time)
@@ -58,9 +55,10 @@ void Zombie::InitDraw()
 	float a, b;
 	glEnable(GL_LINE_SMOOTH);
 	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
-	glPushMatrix();		
-		glTranslatef(position.GetX(), position.GetY(), 0.0);
-		glRotatef(rotation, 0.0f, 0.0f, 1.0f);
+	glPushMatrix();	
+		
+		glTranslated(position.GetX(), position.GetY(), 0.0);
+		glRotated(rotation, 0.0f, 0.0f, 1.0f);
 
 		glBegin(GL_TRIANGLES);
 			glColor3f(1.0f, 1.0f, 0.0f);
