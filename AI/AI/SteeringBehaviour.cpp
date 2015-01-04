@@ -97,8 +97,8 @@ void SteeringBehaviour::Wander()
 
 	Vector2D target_local = target_wander + Vector2D(wander_distance, 0);
 
-	// tutaj trzeba zrobiæ wszystkie rotacje/translacje/skalowania aby uzyskaæ punkt we wspó³rzêdnych œwiata
-	Vector2D target_world = target_local + owner->GetPosition();
+	// tutaj trzeba zrobiEwszystkie rotacje/translacje/skalowania aby uzyskaæ punkt we wspó³rzêdnych œwiata
+	//Vector2D target_world = target_local + owner->GetPosition();
 
 
 	force_wander = target_local - owner->GetPosition();

@@ -19,6 +19,7 @@ class Vector2D
 		double Distance(const Vector2D &v) const;
 		double DistanceSqrt(const Vector2D &v) const;
         double Dot(const Vector2D &v) const;
+		void Rotate(double rot);
         void Normalize(void);
 		void Truncate(double d);
 		void SwapXY(void);
@@ -88,6 +89,13 @@ inline double Vector2D::DistanceSqrt(const Vector2D &v) const
 inline double Vector2D::Dot(const Vector2D &v) const
 {
 	return (this->x*v.x + this->y*v.y);
+}
+
+inline void Vector2D::Rotate(double rot)
+{
+	double xp = x, yp = y;
+	this->x = xp*cos(rot) - yp*sin(rot);
+	this->y = xp*sin(rot) + yp*cos(rot);
 }
 
 inline void Vector2D::Normalize(void)

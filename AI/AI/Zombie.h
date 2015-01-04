@@ -22,6 +22,7 @@ class Zombie: public GameEntity
 
     private:
         Vector2D velocity;
+		double rotation;
 
         SteeringBehaviour *steering_behaviour;
 
