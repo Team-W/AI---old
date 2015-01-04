@@ -38,10 +38,13 @@ void renderScene(void) {
 
 void idle(int i){
 	
+	//system("cls");
 	scene.Draw(0.01);
 	//cout << *z;
+
 	//system("pause");
 	//glutPostRedisplay();
+	//system("pause");
 }
 
 void idle(){

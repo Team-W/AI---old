@@ -28,12 +28,12 @@ class Vector2D
 		Vector2D GetPerpendicular(void) const;
 
         Vector2D& operator=(const Vector2D &v);
-        Vector2D& operator+(const Vector2D &v);
-        Vector2D& operator-(const Vector2D &v);
+        Vector2D  operator+(const Vector2D &v);
+        Vector2D  operator-(const Vector2D &v);
         Vector2D& operator+=(const Vector2D &v);
         Vector2D& operator-=(const Vector2D &v);
-        Vector2D& operator*(const double &d);
-        Vector2D& operator/(const double &d);
+        Vector2D  operator*(const double &d);
+        Vector2D  operator/(const double &d);
 		Vector2D& operator*=(const double &d);
 		Vector2D& operator/=(const double &d);
         void operator()(double x, double y);
