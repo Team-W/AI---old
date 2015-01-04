@@ -15,7 +15,7 @@ SteeringBehaviour::SteeringBehaviour(Zombie *z)
 	
 
 	result_steering_force(0, 0);
-	result_heading(0, 0);
+	result_heading(0, 0.5);
 	result_side(0, 0);
 
 	// ---------- WANDER INIT ---------- //
@@ -105,8 +105,8 @@ void SteeringBehaviour::Wander()
 	//double angle = acos(target_local.Dot(directon) / (target_local.Length()*directon.Length()));
 	// tutaj trzeba zrobiEwszystkie rotacje/translacje/skalowania aby uzyskaEpunkt we wspó³rzêdnych œwiata
 	//Vector2D target_world = target_local;// + owner->GetPosition();
-	cout << target_local;
-	system("pause");
+	//cout << target_local;
+	//system("pause");
 
 	force_wander = target_local;// -owner->GetPosition();
 }

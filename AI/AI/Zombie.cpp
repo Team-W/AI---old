@@ -10,7 +10,7 @@ Zombie::Zombie(double x, double y)
 	this->steering_behaviour = new SteeringBehaviour(this);
     this->position(x, y);
     this->velocity(0, 0);
-    this->heading(0, 0);
+    this->heading(0, 0.5);
     this->side(0, 0);
 	this->rotation = 0;
 }
@@ -26,8 +26,10 @@ void Zombie::Update(double delta_time)
 	Vector2D acceleration = steering_behaviour->GetSteeringForce();
 	velocity += acceleration * delta_time;
 	velocity.Truncate(ZOMBIE_MAX_SPEED);
+	//cout << atan2(-2, 0) * 180 / PI << "\n";//funkcja do obliczania kata !!
+	//system("pause");
+	//double angle = acos(acceleration.Dot(heading) / (heading.Length()*acceleration.Length()));
 
-	
 	if(velocity.LengthSqrt() > 0.00000001)
 	{
 		heading = velocity;
@@ -36,11 +38,14 @@ void Zombie::Update(double delta_time)
 	}
 	/*/counting angle between 2 vectors
 	Vector2D standard = Vector2D(0.0, 1.0);
-	double angle = acos(acceleration.Dot(standard) / (standard.Length()*acceleration.Length()));
+	
 	rotation += angle;
 	cout << angle << "\n";
 	//velocity.Rotate(rotation); //rotating velocity vector to move in the correct direction*/
-	
+	/*double angle = atan2(velocity.GetX(), velocity.GetY()) * 180 / PI;
+	cout << velocity << angle << "\n";
+	rotation = angle;
+	velocity.Rotate(angle);*/
     position += velocity * delta_time;
 	
 }

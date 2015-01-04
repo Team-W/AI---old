@@ -15,7 +15,7 @@ void init(){
 		i++;
 	} while (i != 'a');
 	scene.AddObject(z);
-	scene.AddObject(new Obstacle(-2.00, -1.00, 0.75));
+	scene.AddObject(new Obstacle(-30.00, -20.00, 14.00));
 	scene.AddObject(new Obstacle(-1.20,  1.35, 0.50));
 	scene.AddObject(new Obstacle( 1.30, -0.80, 0.60));
 	scene.AddObject(new Obstacle( 1.15,  1.75, 0.45));
@@ -28,7 +28,7 @@ void renderScene(void) {
 
 	glPushMatrix();
 
-		glScalef(0.3f, 0.3f, 1.0f);
+		glScalef(0.02f, 0.02f, 1.0f);
 		scene.InitDraw();
 
 	glPopMatrix();
@@ -39,7 +39,7 @@ void renderScene(void) {
 void idle(int i){
 	
 	//system("cls");
-	scene.Draw(0.01);
+	
 	//cout << *z;
 
 	//system("pause");
@@ -48,11 +48,13 @@ void idle(int i){
 }
 
 void idle(){
+
 	
-	//Sleep(70);
+	Sleep(70);
 	//randoming position on the circle
 	//(10, idle, 1);//
-	glutTimerFunc(100, idle, 10);
+	//glutTimerFunc(100, idle, 10);
+	scene.Draw(0.01);
 	glutPostRedisplay();
 }
 
