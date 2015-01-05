@@ -13,6 +13,8 @@ Zombie::Zombie(double x, double y)
     this->heading(0, 0.5);
     this->side(0, 0);
 	this->rotation = 0;
+
+	p = new Point(0, 0, 0.3);
 }
 
 Zombie::~Zombie(void)
@@ -24,6 +26,10 @@ void Zombie::Update(double delta_time)
 {
 	// system("cls"); cout << *this;
 	Vector2D acceleration = steering_behaviour->GetSteeringForce();
+	double angle = atan2(acceleration.GetX(), acceleration.GetY());
+	Vector2D tmp = acceleration;
+	tmp.Rotate(angle);
+	p->Draw(tmp + position);
 	velocity += acceleration * delta_time;
 	velocity.Truncate(ZOMBIE_MAX_SPEED);
 	//cout << atan2(-2, 0) * 180 / PI << "\n";//funkcja do obliczania kata !!
@@ -46,6 +52,7 @@ void Zombie::Update(double delta_time)
 	cout << velocity << angle << "\n";
 	rotation = angle;
 	velocity.Rotate(angle);*/
+	
     position += velocity * delta_time;
 	
 }
@@ -66,27 +73,29 @@ void Zombie::InitDraw()
 		glRotated(rotation, 0.0f, 0.0f, 1.0f);
 
 		glBegin(GL_TRIANGLES);
-			glColor3f(1.0f, 1.0f, 0.0f);
-			glVertex3f(-0.03f,-0.05f, 0.f);
-			glVertex3f( 0.03f,-0.05f, 0.f);
-			glVertex3f( 0.00f, 0.05f, 0.f);
+			glColor3f(0.0f, 0.0f, 1.0f);
+			glVertex3f(-0.50f,-0.60f, 0.f);
+			glVertex3f( 0.50f,-0.60f, 0.f);
+			glVertex3f( 0.00f, 0.75f, 0.f);
 		glEnd();
 
 		glBegin(GL_LINES);
-			glColor3f(0.0f, 1.0f, 0.0f);
+			glColor3f(0.5f, 0.0f, 0.0f);
 
-			a = (float)0.07 * cos(359 * PI / 180.0f);
-			b = (float)0.07 * sin(359 * PI / 180.0f);
+			a = 1.0f * cos(359 * PI / 180.0f);
+			b = 1.0f * sin(359 * PI / 180.0f);
 			for (int j = 0; j < 360; j++)
 			{
 				glVertex2f(a, b);
-				a = (float)0.07 * cos(j * PI / 180.0f);
-				b = (float)0.07 * sin(j * PI / 180.0f);
+				a = 1.0f * cos(j * PI / 180.0f);
+				b = 1.0f * sin(j * PI / 180.0f);
 				glVertex2f(a, b);
 			}
 		glEnd();
 	glPopMatrix();
 	glDisable(GL_LINE_SMOOTH);
+
+	p->InitDraw();
 }
 
 ostream& operator<<(ostream &o, const Zombie &z)

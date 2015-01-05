@@ -27,11 +27,14 @@ void Obstacle::Draw(double delta_time)
 
 void Obstacle::InitDraw()
 {
+	glEnable(GL_LINE_SMOOTH);
+	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+
 	float a, b;
 	glPushMatrix();
 	glTranslatef(position.GetX(), position.GetY(), 0.0);
-	glBegin(GL_LINES);
-	glColor3f(1.0f, 0.0f, 0.0f);
+	glBegin(GL_TRIANGLE_FAN);
+	glColor3f(0.3f, 0.1f, 0.0f);
 
 	a = (float)radius * cos(359 * PI / 180.0f);
 	b = (float)radius * sin(359 * PI / 180.0f);
@@ -45,6 +48,8 @@ void Obstacle::InitDraw()
 
 	glEnd();
 	glPopMatrix();
+
+	glDisable(GL_LINE_SMOOTH);
 }
 
 ostream& operator<<(ostream &o, const Obstacle &ob)

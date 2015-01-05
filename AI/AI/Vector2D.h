@@ -93,9 +93,13 @@ inline double Vector2D::Dot(const Vector2D &v) const
 
 inline void Vector2D::Rotate(double rot)
 {
-	double xp = x, yp = y;
-	this->x = xp*cos(rot) - yp*sin(rot);
-	this->y = xp*sin(rot) + yp*cos(rot);
+	double s = sin(rot);
+	double c = cos(rot);
+	double xp = x;
+	double yp = y;
+
+	this->x = xp*c + yp*s;
+	this->y = yp*c - xp*s;
 }
 
 inline void Vector2D::Normalize(void)

@@ -4,6 +4,7 @@
 #include "Headers.h"
 #include "GameEntity.h"
 #include "SteeringBehaviour.h"
+#include "Point.h"
 
 class SteeringBehaviour;
 
@@ -22,6 +23,7 @@ class Zombie: public GameEntity
 
     private:
         Vector2D velocity;
+		Point *p;
 		double rotation;
 
         SteeringBehaviour *steering_behaviour;

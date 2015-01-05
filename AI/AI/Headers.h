@@ -4,7 +4,7 @@
 // Definitions
 #define PI 3.14159265358979323846
 
-#define ZOMBIE_MAX_SPEED 1.4
+#define ZOMBIE_MAX_SPEED 10.0
 
 // Standard Libraries
 #include <iostream>
@@ -20,6 +20,3 @@
 using namespace std;
 
 #endif
-
-
-

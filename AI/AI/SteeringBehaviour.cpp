@@ -19,9 +19,9 @@ SteeringBehaviour::SteeringBehaviour(Zombie *z)
 	result_side(0, 0);
 
 	// ---------- WANDER INIT ---------- //
-	wander_radius	= 1.2;
-	wander_distance	= 2.0;
-	wander_jitter	= 0.80;
+	wander_radius	= 2.0;
+	wander_distance	= 4.0;
+	wander_jitter	= 1.0;
 
 	float alpha = (float)(rand()%360) * PI/180.0f;
 	target_wander(wander_radius*cos(alpha), wander_radius*sin(alpha));
@@ -44,7 +44,7 @@ Vector2D SteeringBehaviour::GetSteeringForce(void)
 
 	result_steering_force = force_wander;
 
-	result_steering_force.SwapXY();
+	//result_steering_force.SwapXY();
 	return this->result_steering_force;
 }
 
