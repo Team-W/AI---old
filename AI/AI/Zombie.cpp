@@ -1,10 +1,5 @@
 #include "Zombie.h"
 
-Zombie::Zombie()
-{
-
-}
-
 Zombie::Zombie(double x, double y)
 {
 	this->steering_behaviour = new SteeringBehaviour(this);
@@ -13,8 +8,15 @@ Zombie::Zombie(double x, double y)
     this->heading(0, 0.5);
     this->side(0, 0);
 	this->rotation = 0;
-
 	p = new Point(0, 0, 0.3);
+	GLfloat tmp_Matrix[16] = { 0.03,  0.0, 0.0, 0.0,
+								0.0, 0.03, 0.0, 0.0,
+								0.0,  0.0, 1.0, 0.0,
+								0.0,  0.0, 0.0, 1.0 };
+
+	for (int i = 0; i < 16; i++){
+		model_Matrix[i] = tmp_Matrix[i];
+	}
 }
 
 Zombie::~Zombie(void)
@@ -28,8 +30,8 @@ void Zombie::Update(double delta_time)
 	Vector2D acceleration = steering_behaviour->GetSteeringForce();
 	double angle = atan2(acceleration.GetX(), acceleration.GetY());
 	Vector2D tmp = acceleration;
-	tmp.Rotate(angle);
-	p->Draw(tmp + position);
+	//tmp.Rotate(angle);
+	p->Draw(tmp);
 	velocity += acceleration * delta_time;
 	velocity.Truncate(ZOMBIE_MAX_SPEED);
 	//cout << atan2(-2, 0) * 180 / PI << "\n";//funkcja do obliczania kata !!
@@ -41,8 +43,8 @@ void Zombie::Update(double delta_time)
 		heading = velocity;
 		heading.Normalize();
 		side = heading.GetPerpendicular();
-	}
-	/*/counting angle between 2 vectors
+		}
+		/*/counting angle between 2 vectors
 	Vector2D standard = Vector2D(0.0, 1.0);
 	
 	rotation += angle;
@@ -52,6 +54,8 @@ void Zombie::Update(double delta_time)
 	cout << velocity << angle << "\n";
 	rotation = angle;
 	velocity.Rotate(angle);*/
+	//model_Matrix[12] = velocity.GetX()* delta_time;
+	//model_Matrix[13] = velocity.GetY()* delta_time;
 	
     position += velocity * delta_time;
 	
@@ -67,10 +71,9 @@ void Zombie::InitDraw()
 	float a, b;
 	glEnable(GL_LINE_SMOOTH);
 	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
-	glPushMatrix();	
-		
-		glTranslated(position.GetX(), position.GetY(), 0.0);
-		glRotated(rotation, 0.0f, 0.0f, 1.0f);
+	glPushMatrix();
+		//glTranslated(position.GetX(), position.GetY(), 0.0);
+		//glRotated(rotation, 0.0f, 0.0f, 1.0f);
 
 		glBegin(GL_TRIANGLES);
 			glColor3f(0.0f, 0.0f, 1.0f);
@@ -92,10 +95,11 @@ void Zombie::InitDraw()
 				glVertex2f(a, b);
 			}
 		glEnd();
+	p->InitDraw();
 	glPopMatrix();
 	glDisable(GL_LINE_SMOOTH);
 
-	p->InitDraw();
+	
 }
 
 ostream& operator<<(ostream &o, const Zombie &z)

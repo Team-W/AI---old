@@ -24,7 +24,14 @@ void init(){
 void renderScene(void) {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
-
+	glTranslated(1, 1, 0);
+	GLfloat model_Matrix[16];
+	glGetFloatv(GL_MODELVIEW_MATRIX, model_Matrix);
+	//glLoadMatrixf(model_Matrix);
+	for (int i = 0; i < 4; i++){
+		cout << "[ " << model_Matrix[i] << " " << model_Matrix[i + 1] << " " << model_Matrix[i + 2] << " " << model_Matrix[i + 3] << " ]\n";
+	}
+	system("pause");
 	glPushMatrix();
 
 		glScalef(0.03f, 0.03f, 1.0f);
@@ -47,12 +54,13 @@ void idle(int i){
 }
 
 void idle(){
+	static long long int old_time = 0;
 
+	long long int time_since_start = glutGet(GLUT_ELAPSED_TIME);
+	double dt = (time_since_start - old_time) * 0.001f;
+	old_time = time_since_start;
 
-	//randoming position on the circle
-	//(10, idle, 1);//
-	//glutTimerFunc(100, idle, 10);
-	scene.Draw(0.01);
+	scene.Draw(dt);
 	glutPostRedisplay();
 }
 
@@ -79,6 +87,7 @@ int main(int argc, char **argv)
 	glutInitWindowSize(700, 700);
 	//gluPerspective(60, 1, 1, 300);
 	//gluLookAt(0, 0, 0, 0, 0, -1, 0, 1, 0);
+	glMatrixMode(GL_MODELVIEW);
 	glutCreateWindow("Basic AI");
 
 	//Initial implementation of objects
