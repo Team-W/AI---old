@@ -9,14 +9,8 @@ Zombie::Zombie(double x, double y)
     this->side(0, 0);
 	this->rotation = 0;
 	p = new Point(0, 0, 0.3);
-	GLfloat tmp_Matrix[16] = { 0.03,  0.0, 0.0, 0.0,
-								0.0, 0.03, 0.0, 0.0,
-								0.0,  0.0, 1.0, 0.0,
-								0.0,  0.0, 0.0, 1.0 };
-
-	for (int i = 0; i < 16; i++){
-		model_Matrix[i] = tmp_Matrix[i];
-	}
+	Scale(glm::vec3(0.03f, 0.03f, 1.0f));
+	Translate(glm::vec3(x, y, 0));
 }
 
 Zombie::~Zombie(void)
@@ -72,9 +66,15 @@ void Zombie::InitDraw()
 	glEnable(GL_LINE_SMOOTH);
 	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 	glPushMatrix();
+	GLfloat Matrix[16];
+	getMatrix(Matrix);
+	glLoadMatrixf(Matrix);
 		//glTranslated(position.GetX(), position.GetY(), 0.0);
 		//glRotated(rotation, 0.0f, 0.0f, 1.0f);
-
+	for (int i = 0; i < 4; i++){
+		cout << "[ " << Matrix[i] << " " << Matrix[i + 1] << " " << Matrix[i + 2] << " " << Matrix[i + 3] << " ]\n";
+	}
+	system("pause");
 		glBegin(GL_TRIANGLES);
 			glColor3f(0.0f, 0.0f, 1.0f);
 			glVertex3f(-0.50f,-0.60f, 0.f);

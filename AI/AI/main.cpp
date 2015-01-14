@@ -24,14 +24,7 @@ void init(){
 void renderScene(void) {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
-	glTranslated(1, 1, 0);
-	GLfloat model_Matrix[16];
-	glGetFloatv(GL_MODELVIEW_MATRIX, model_Matrix);
-	//glLoadMatrixf(model_Matrix);
-	for (int i = 0; i < 4; i++){
-		cout << "[ " << model_Matrix[i] << " " << model_Matrix[i + 1] << " " << model_Matrix[i + 2] << " " << model_Matrix[i + 3] << " ]\n";
-	}
-	system("pause");
+
 	glPushMatrix();
 
 		glScalef(0.03f, 0.03f, 1.0f);

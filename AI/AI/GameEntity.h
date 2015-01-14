@@ -13,11 +13,20 @@ class GameEntity
         GameEntity(void);
         virtual ~GameEntity(void);
 
+		glm::mat4 model_matrix;
+		glm::mat4 view_matrix;
+
         virtual void Update(double delta_time) = 0;
         virtual void Draw(double delta_time) = 0;
 		virtual void InitDraw(void) = 0;
 
-        void AttachToGameWorld(GameWorld *gw);
+		void Rotate(float degrees, glm::vec3 axis);
+		void Translate(glm::vec3 vector);
+		void Scale(glm::vec3 vector);
+		void getMatrix(GLfloat (&arr)[16]);
+
+		void AttachToGameWorld(GameWorld *gw);
+		 
 
         int GetID(void) const;
         const Vector2D& GetPosition(void) const;

@@ -24,7 +24,6 @@ class Zombie: public GameEntity
         Vector2D velocity;
 		Point *p;
 		double rotation;
-		GLfloat model_Matrix[16];
 
         SteeringBehaviour *steering_behaviour;
 

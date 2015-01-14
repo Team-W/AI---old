@@ -2,6 +2,7 @@
 #define HEADERS_H
 
 // Definitions
+#define GLM_FORCE_RADIANS
 #define PI 3.14159265358979323846
 
 #define ZOMBIE_MAX_SPEED 10.0
@@ -15,6 +16,9 @@
 
 // Graphic Libraries
 #include <GL/glut.h>
+#include <glm\glm.hpp>
+#include <glm\gtc\matrix_transform.hpp>
+#include <glm\gtc\constants.hpp>
 
 // Misc
 using namespace std;
