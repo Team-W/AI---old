@@ -23,7 +23,7 @@ class GameEntity
 		void Rotate(float degrees, glm::vec3 axis);
 		void Translate(glm::vec3 vector);
 		void Scale(glm::vec3 vector);
-		void getMatrix(GLfloat (&arr)[16]);
+		void getMatrix(GLfloat arr[16]);
 
 		void AttachToGameWorld(GameWorld *gw);
 		 

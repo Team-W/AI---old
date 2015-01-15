@@ -22,9 +22,8 @@ void Zombie::Update(double delta_time)
 {
 	// system("cls"); cout << *this;
 	Vector2D acceleration = steering_behaviour->GetSteeringForce();
-	double angle = atan2(acceleration.GetX(), acceleration.GetY());
+
 	Vector2D tmp = acceleration;
-	//tmp.Rotate(angle);
 	p->Draw(tmp);
 	velocity += acceleration * delta_time;
 	velocity.Truncate(ZOMBIE_MAX_SPEED);
@@ -32,26 +31,32 @@ void Zombie::Update(double delta_time)
 	//system("pause");
 	//double angle = acos(acceleration.Dot(heading) / (heading.Length()*acceleration.Length()));
 
-	if(velocity.LengthSqrt() > 0.00000001)
+	if (velocity.LengthSqrt() > 0.00000001)
 	{
 		heading = velocity;
 		heading.Normalize();
 		side = heading.GetPerpendicular();
-		}
-		/*/counting angle between 2 vectors
+	}
+
+	Vector2D move = velocity * delta_time;
+	//angle = atan2(move.GetX(), move.GetY());
+	//cout << rotation<< " " << angle << "\n";
+	//system("pause");
+	//rotation += angle;
+
+	//move.Rotate(rotation);
+	//position += move;
+	
+	/*/counting angle between 2 vectors
 	Vector2D standard = Vector2D(0.0, 1.0);
-	
 	rotation += angle;
-	cout << angle << "\n";
+	cout << angle << "\n";*/
 	//velocity.Rotate(rotation); //rotating velocity vector to move in the correct direction*/
-	/*double angle = atan2(velocity.GetX(), velocity.GetY()) * 180 / PI;
-	cout << velocity << angle << "\n";
-	rotation = angle;
-	velocity.Rotate(angle);*/
-	//model_Matrix[12] = velocity.GetX()* delta_time;
-	//model_Matrix[13] = velocity.GetY()* delta_time;
-	
-    position += velocity * delta_time;
+	//double angle = atan2(velocity.GetX(), velocity.GetY()) * 180 / PI * delta_time;
+	//cout << velocity <<" "<< angle << "\n";
+
+	//velocity.Rotate(angle);
+
 	
 }
 
@@ -69,12 +74,12 @@ void Zombie::InitDraw()
 	GLfloat Matrix[16];
 	getMatrix(Matrix);
 	glLoadMatrixf(Matrix);
-		//glTranslated(position.GetX(), position.GetY(), 0.0);
-		//glRotated(rotation, 0.0f, 0.0f, 1.0f);
-	for (int i = 0; i < 4; i++){
+	/*for (int i = 0; i < 4; i++){
 		cout << "[ " << Matrix[i] << " " << Matrix[i + 1] << " " << Matrix[i + 2] << " " << Matrix[i + 3] << " ]\n";
 	}
 	system("pause");
+	//glTranslated(position.GetX(), position.GetY(), 0.0);
+	//glRotated(rotation, 0.0f, 0.0f, 1.0f);*/
 		glBegin(GL_TRIANGLES);
 			glColor3f(0.0f, 0.0f, 1.0f);
 			glVertex3f(-0.50f,-0.60f, 0.f);

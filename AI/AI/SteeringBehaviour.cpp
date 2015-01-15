@@ -20,7 +20,7 @@ SteeringBehaviour::SteeringBehaviour(Zombie *z)
 
 	// ---------- WANDER INIT ---------- //
 	wander_radius	= 2.0;
-	wander_distance	= 4.0;
+	wander_distance	= 3.0;
 	wander_jitter	= 1.0;
 
 	float alpha = (float)(rand()%360) * PI/180.0f;

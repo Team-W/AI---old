@@ -7,7 +7,7 @@ GameEntity::GameEntity(void):
     game_world(0),
     collision_radius(0)
 {
-	view_matrix = glm::lookAt(glm::vec3(0.f, 0.f, 1.f), glm::vec3(0.f, 0.f, 0.f), glm::vec3(0.f, 1.f, 0.f));
+	view_matrix = glm::lookAt(glm::vec3(0.f, 0.f, 0.f), glm::vec3(0.f, 0.f, -1.f), glm::vec3(0.f, 1.f, 0.f));
 	model_matrix = glm::mat4(1.0f);
 }
 
@@ -45,13 +45,13 @@ void GameEntity::Scale(glm::vec3 vector)
 {
 	model_matrix = glm::scale(model_matrix, vector);
 }
-void GameEntity::getMatrix(GLfloat(&arr)[16])
-{
+void GameEntity::getMatrix(GLfloat arr[16])
+{	
 	glm::mat4 modelview = view_matrix * model_matrix;
 	for (int i = 0; i < 4; i++){
-		arr[i] = modelview[i][0];
-		arr[i+1] = modelview[i][1];
-		arr[i+2] = modelview[i][2];
-		arr[i+3] = modelview[i][3];
+		arr[4 * i    ] = modelview[i][0];
+		arr[4 * i + 1] = modelview[i][1];
+		arr[4 * i + 2] = modelview[i][2];
+		arr[4 * i + 3] = modelview[i][3];
 	}
 }
