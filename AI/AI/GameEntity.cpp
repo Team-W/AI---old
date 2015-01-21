@@ -34,6 +34,7 @@ void GameEntity::AttachToGameWorld(GameWorld *gw)
 void GameEntity::Rotate(float degrees, glm::vec3 axis)
 {
 	model_matrix = glm::rotate(model_matrix, degrees, axis);
+	//degree's means god f..ing radians (wit czeka cie mord)
 }
 
 void GameEntity::Translate(glm::vec3 vector)

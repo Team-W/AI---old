@@ -15,8 +15,7 @@ Point::~Point(void)
 
 }
 
-void Point::Update(double delta_time)
-{
+void Point::Update(double delta_time){
 
 }
 
@@ -24,12 +23,6 @@ void Point::Draw(double x, double y)
 {
 	this->position(x, y);
 }
-
-void Point::Draw(double delta_time)
-{
-
-}
-
 void Point::Draw(const Vector2D &v)
 {
 	this->position = v;

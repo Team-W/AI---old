@@ -15,8 +15,6 @@ SteeringBehaviour::SteeringBehaviour(Zombie *z)
 	
 
 	result_steering_force(0, 0);
-	result_heading(0, 0.5);
-	result_side(0, 0);
 
 	// ---------- WANDER INIT ---------- //
 	wander_radius	= 2.0;
@@ -26,6 +24,7 @@ SteeringBehaviour::SteeringBehaviour(Zombie *z)
 	float alpha = (float)(rand()%360) * PI/180.0f;
 	target_wander(wander_radius*cos(alpha), wander_radius*sin(alpha));
 	//cout << target_wander;
+	srand(time(NULL));
 }
 
 SteeringBehaviour::~SteeringBehaviour(void)
@@ -41,21 +40,12 @@ void SteeringBehaviour::Attach(Zombie *z)
 Vector2D SteeringBehaviour::GetSteeringForce(void)
 {
 	Wander();
+	//Seek(Vector2D(10,20));
+	//Flee(Vector2D(1, -1));
 
 	result_steering_force = force_wander;
 
-	//result_steering_force.SwapXY();
 	return this->result_steering_force;
-}
-
-Vector2D SteeringBehaviour::GetHeading(void)
-{
-	return this->result_heading;
-}
-
-Vector2D SteeringBehaviour::GetSide(void)
-{
-	return this->result_side;
 }
 
 void SteeringBehaviour::CalculateSteeringForce(void)
@@ -63,24 +53,29 @@ void SteeringBehaviour::CalculateSteeringForce(void)
 
 }
 
-void SteeringBehaviour::CalculateHeading(void)
-{
-
-}
-
-void SteeringBehaviour::CalculateSide(void)
-{
-
-}
-
 void SteeringBehaviour::Seek(Vector2D &v)
 {
-
+	Vector2D desired_velocity = v - owner->GetPosition();
+	desired_velocity.Normalize();
+	desired_velocity = desired_velocity * ZOMBIE_MAX_SPEED;	
+	
+	force_wander = desired_velocity - owner->GetVelocity();
 }
 
 void SteeringBehaviour::Flee(Vector2D &v)
 {
+	Vector2D desired_velocity = owner->GetPosition(); 
 
+	if (owner->GetPosition().DistanceSqrt(v) < 100){
+		desired_velocity = desired_velocity - v;
+		desired_velocity.Normalize();
+		desired_velocity = desired_velocity * ZOMBIE_MAX_SPEED;
+		force_wander = desired_velocity - owner->GetVelocity();
+	}else{
+		force_wander = Vector2D(0, 0);
+	}
+
+	//cout << force_wander;
 }
 
 void SteeringBehaviour::Arrive(Vector2D &v)
@@ -98,17 +93,13 @@ void SteeringBehaviour::Wander()
 	target_wander.Normalize();
 	target_wander *= wander_radius;
 
-	//cout << target_wander;
 	Vector2D target_local = target_wander + Vector2D(0, wander_distance);
-	//Vector2D directon = Vector2D(0, wander_distance);
 	
-	//double angle = acos(target_local.Dot(directon) / (target_local.Length()*directon.Length()));
 	// tutaj trzeba zrobiEwszystkie rotacje/translacje/skalowania aby uzyskaEpunkt we wspó³rzêdnych œwiata
-	//Vector2D target_world = target_local;// + owner->GetPosition();
+	Vector2D target_world = target_local + owner->GetPosition();
 	//cout << target_local;
 	//system("pause");
-
-	force_wander = target_local;// -owner->GetPosition();
+	force_wander = target_world-owner->GetPosition();// -owner->GetPosition();
 }
 
 ostream& operator<<(ostream &o, const SteeringBehaviour &sb)
@@ -120,7 +111,5 @@ ostream& operator<<(ostream &o, const SteeringBehaviour &sb)
 	o << "Wander\t\t["	<< (sb.wander_on	?	"on":"off")		<< "]\t" << sb.force_wander		<< "\n";
 	o << "\n";
 	o << "Force\t\t"	<< sb.result_steering_force												<< "\n";
-	o << "Heading\t\t"	<< sb.result_heading													<< "\n";
-	o << "Side\t\t"		<< sb.result_side														<< "\n";
     return o;
 }

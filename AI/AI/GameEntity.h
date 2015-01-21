@@ -17,10 +17,9 @@ class GameEntity
 		glm::mat4 view_matrix;
 
         virtual void Update(double delta_time) = 0;
-        virtual void Draw(double delta_time) = 0;
 		virtual void InitDraw(void) = 0;
 
-		void Rotate(float degrees, glm::vec3 axis);
+		void Rotate(float degrees, glm::vec3 axis);//degree's = radians, so much trouble beause of this line
 		void Translate(glm::vec3 vector);
 		void Scale(glm::vec3 vector);
 		void getMatrix(GLfloat arr[16]);

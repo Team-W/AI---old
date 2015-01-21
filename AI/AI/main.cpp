@@ -8,7 +8,7 @@ Scene scene;
 Zombie *z = new Zombie(0.0, 0.0);
 
 void init(){
-	srand(time(NULL));
+	//srand(time(NULL));
 	unsigned char i = 'a';
 	do{
 		keyStates[i] = false;
@@ -47,10 +47,11 @@ void idle(int i){
 }
 
 void idle(){
+	Sleep(33);
 	static long long int old_time = 0;
 
 	long long int time_since_start = glutGet(GLUT_ELAPSED_TIME);
-	double dt = (time_since_start - old_time) * 0.001f;
+	double dt = (time_since_start - old_time) * 0.00033f;
 	old_time = time_since_start;
 
 	scene.Draw(dt);

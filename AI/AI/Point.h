@@ -12,7 +12,6 @@ public:
 	~Point(void);
 
 	void Update(double delta_time);
-	void Draw(double delta_time);
 	void Draw(double x, double y);
 	void Draw(const Vector2D &v);
 	void InitDraw(void);

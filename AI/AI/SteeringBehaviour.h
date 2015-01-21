@@ -16,8 +16,6 @@ class SteeringBehaviour
 		void Attach(Zombie *z);
 
 		Vector2D GetSteeringForce(void);
-		Vector2D GetHeading(void);
-		Vector2D GetSide(void);
 
 		void ActivateSeek(bool on);
 		void ActivateFlee(bool on);
@@ -43,12 +41,8 @@ class SteeringBehaviour
 		Vector2D force_wander;
 
 		Vector2D result_steering_force;
-		Vector2D result_heading;
-		Vector2D result_side;
 
 		void CalculateSteeringForce(void);
-		void CalculateHeading(void);
-		void CalculateSide(void);
 
 		void Seek(Vector2D &v);
 		void Flee(Vector2D &v);

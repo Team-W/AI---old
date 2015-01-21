@@ -5,7 +5,7 @@
 #define GLM_FORCE_RADIANS
 #define PI 3.14159265358979323846
 
-#define ZOMBIE_MAX_SPEED 10.0
+#define ZOMBIE_MAX_SPEED 15.0
 
 // Standard Libraries
 #include <iostream>
@@ -16,9 +16,9 @@
 
 // Graphic Libraries
 #include <GL/glut.h>
-#include <glm\glm.hpp>
-#include <glm\gtc\matrix_transform.hpp>
-#include <glm\gtc\constants.hpp>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/constants.hpp>
 
 // Misc
 using namespace std;
